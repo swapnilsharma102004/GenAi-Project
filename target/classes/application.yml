@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ai-chat-bot
+
+server:
+  port: 8080
+
+gemini:
+  api-key: ${GEMINI_API_KEY}
+  model-name: gemini-3.8-flash
+
+reactor:
+  netty:
+    core-thread-pool-size: 4
