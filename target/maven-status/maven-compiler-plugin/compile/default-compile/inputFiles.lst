@@ -1,6 +1,13 @@
 C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\AiChatBotApplication.java
 C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\cache\ChatCache.java
+C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\cache\ConversationCache.java
 C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\config\GeminiConfig.java
 C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\controller\ChatController.java
+C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\dto\request\ChatRequest.java
+C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\dto\request\ConversationChatRequest.java
+C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\dto\response\ChatResponse.java
+C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\dto\response\ChatStreamResponse.java
 C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\guard\CostGuard.java
+C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\model\Conversation.java
+C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\model\ConversationMessage.java
 C:\Users\swapn\Desktop\GenAi\src\main\java\com\example\aichatbot\service\ChatService.java

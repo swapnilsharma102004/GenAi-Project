@@ -1,5 +1,6 @@
 package com.example.aichatbot.controller;
 
+import com.example.aichatbot.dto.request.ChatRequest;
 import com.example.aichatbot.service.ChatService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,8 @@ public class ChatController {
 
     @PostMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public ResponseEntity<Flux<String>> streamChat(@RequestBody ChatRequest request) {
-        String message = request.getMessage();
+        String message = request.message();
+        String conversationId = request.conversationId();
 
         if (message == null || message.trim().isEmpty()) {
             return ResponseEntity.badRequest().body(Flux.just("data: Message cannot be empty"));
@@ -26,18 +28,6 @@ public class ChatController {
 
         return ResponseEntity.ok()
                 .contentType(MediaType.TEXT_EVENT_STREAM)
-                .body(chatService.streamMessage(message));
-    }
-
-    public static class ChatRequest {
-        private String message;
-
-        public String getMessage() {
-            return message;
-        }
-
-        public void setMessage(String message) {
-            this.message = message;
-        }
+                .body(chatService.streamMessage(conversationId, message));
     }
 }
