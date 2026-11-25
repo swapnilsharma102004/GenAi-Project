@@ -4,6 +4,7 @@ import com.example.aichatbot.cache.ChatCache;
 import com.example.aichatbot.cache.ConversationCache;
 import com.example.aichatbot.guard.CostGuard;
 import com.example.aichatbot.model.Conversation;
+import com.example.aichatbot.model.ConversationMessage;
 import com.google.genai.Client;
 import com.google.genai.ResponseStream;
 import com.google.genai.types.Content;
@@ -129,6 +130,19 @@ public class ChatService {
                 sink.error(e);
             }
         }).subscribeOn(Schedulers.boundedElastic()).cast(String.class);
+    }
+
+    public List<ConversationMessage> getHistory(String conversationId) {
+        Conversation conversation = conversationCache.get(conversationId);
+        return conversation != null ? conversation.getMessages() : List.of();
+    }
+
+    public void clearConversation(String conversationId) {
+        if (conversationId == null || conversationId.isBlank()) {
+            conversationCache.put("default", new Conversation("default"));
+        } else {
+            conversationCache.put(conversationId, new Conversation(conversationId));
+        }
     }
 
     public void clearCache() {

@@ -1,0 +1,40 @@
+### 1. Stateless Demo (Forgets context)
+POST http://localhost:8080/api/chat/stream
+Content-Type: application/json
+
+{
+  "message": "Hello, my name is Bob."
+}
+
+### 2. Stateful Demo (Remembers context)
+POST http://localhost:8080/api/chat/stream
+Content-Type: application/json
+
+{
+  "conversationId": "test-session",
+  "message": "Hello, my name is Charlie."
+}
+
+### 3. Stateful Follow-up (Should remember name)
+POST http://localhost:8080/api/chat/stream
+Content-Type: application/json
+
+{
+  "conversationId": "test-session",
+  "message": "What is my name?"
+}
+
+### 4. Fetch History API
+GET http://localhost:8080/api/chat/history/test-session
+
+### 5. Clear API
+DELETE http://localhost:8080/api/chat/clear/test-session
+
+### 6. Test After Clear (Should forget name)
+POST http://localhost:8080/api/chat/stream
+Content-Type: application/json
+
+{
+  "conversationId": "test-session",
+  "message": "What is my name?"
+}
